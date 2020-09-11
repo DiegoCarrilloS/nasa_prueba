@@ -18,11 +18,20 @@ def request(url1, api_key)
 end
 =begin
 def buid_web_page(hash)
-    hash.["photos":[{[0].each do |i|
-        puts i["img_src"]
-    end
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head>
+    <body>
+    
+    </body>
+    </html>
 end
 =end
+
 
 
 url_curiosity = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&"
@@ -34,14 +43,17 @@ r_curiosity = request(url_curiosity, api_key)
 r_opportunity = request(url_opportunity, api_key)
 r_spirit = request(url_spirit, api_key)
 
-r_curiosity["photos"].each do |i|
-    puts i["img_src"]
-end
-r_opportunity["photos"].each do |i|
-    puts i["img_src"]
-end
-r_spirit["photos"].each do |i|
-    puts i["img_src"]
+
+output_curiosity = {}
+i = 0
+r_curiosity["photos"].each do |hash|
+    hash.each do |k, v|
+        if k == "img_src"
+            output_curiosity["key#{i}"] = v
+            i += 1
+        end
+    end
+    print output_curiosity
 end
 
 
