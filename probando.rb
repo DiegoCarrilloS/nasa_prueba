@@ -8,3 +8,6 @@ all = x.merge(y)
 all2 = all.merge(z)
 
 puts all2
+
+all3 = all2.invert
+puts all3
